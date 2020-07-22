@@ -53,6 +53,9 @@ public void setDis(int dis){
         this.dis = dis;
         invalidate();
 }
+    public int getDis(){
+        return  this.dis;
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

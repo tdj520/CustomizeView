@@ -3,6 +3,7 @@ package com.example.ndkdemo1;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCount++;
-                dis+=10;
-                myView1.setDis(dis);
+                dis+=360;
+                //myView1.setDis(dis);
+                //实现动画效果
+                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(myView1,"dis",dis*10);
+                objectAnimator.setDuration(10000);
+                objectAnimator.start();
                 if(mCount%3 == 0){
                     myView.setColorFilter(0x00ffff);
                 }else if(mCount%3 == 1){

@@ -21,6 +21,7 @@ public class MyView3 extends ImageView {
     private Paint mPaint;
     private Bitmap mBitmap;
     private Bitmap mBitmap1;
+    private float textSize = 10;
     private int dis;
     private Camera camera;
     public MyView3(Context context) {
@@ -59,6 +60,14 @@ public void setDis(int dis){
         mPaint.setTextSize(20);
         int weidth = mBitmap.getWidth();
         int heght = mBitmap.getHeight();
+        mPaint.setTextSize(textSize);
         canvas.drawText("尺寸："+weidth+","+heght,0,20,mPaint);
+    }
+    public void setDisX(float x){
+        this.textSize = x;
+        invalidate();
+    }
+    public float getDisX(){
+       return textSize;
     }
 }
