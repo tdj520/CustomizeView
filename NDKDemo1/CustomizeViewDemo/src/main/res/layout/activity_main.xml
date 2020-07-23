@@ -20,13 +20,13 @@
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="click"
+        android:text="动画"
         />
     <Button
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="click1"
+        android:text="下一个界面"
         />
     </LinearLayout>
     <com.example.ndkdemo1.MyView1
