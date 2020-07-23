@@ -39,6 +39,8 @@ import androidx.annotation.RequiresApi;
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
+import static android.view.View.LAYER_TYPE_HARDWARE;
+
 public class SecondActivity extends Activity {
     private Button btn;
     private ImageView imageView;
@@ -135,14 +137,23 @@ public class SecondActivity extends Activity {
                 objectAnimator1.start();*/
 
                 //第一个参数是时间完成度，第二个参数是动画完成度
-                Keyframe keyframe = Keyframe.ofFloat(0,0);   //时间完成度为0,动画的值为0
+                /*Keyframe keyframe = Keyframe.ofFloat(0,0);   //时间完成度为0,动画的值为0
                 Keyframe keyframe1 = Keyframe.ofFloat(0.7f,300); //时间完成度为0.8,动画的值为300
                 Keyframe keyframe2 = Keyframe.ofFloat(0.8f,200);    //时间完成度为1,动画的值为200
                 Keyframe keyframe3 = Keyframe.ofFloat(1,300);    //时间完成度为1,动画的值为200
+
+                Keyframe keyframe4 = Keyframe.ofFloat(0,1);   //时间完成度为0,动画的值为0
+                Keyframe keyframe5 = Keyframe.ofFloat(0.7f,0.2f); //时间完成度为0.8,动画的值为300
+                Keyframe keyframe6 = Keyframe.ofFloat(0.8f,0.5f);    //时间完成度为1,动画的值为200
+                Keyframe keyframe7 = Keyframe.ofFloat(1,1);    //时间完成度为1,动画的值为200
+
                 PropertyValuesHolder propertyValuesHolder = PropertyValuesHolder.ofKeyframe("translationX",keyframe,keyframe1,keyframe2,keyframe3);
-                ObjectAnimator objectAnimator1 = ObjectAnimator.ofPropertyValuesHolder(myView4,propertyValuesHolder);
+                PropertyValuesHolder propertyValuesHolder1 = PropertyValuesHolder.ofKeyframe("alpha",keyframe4,keyframe5,keyframe6,keyframe7);
+
+                ObjectAnimator objectAnimator1 = ObjectAnimator.ofPropertyValuesHolder(myView4,propertyValuesHolder,propertyValuesHolder1);
                 objectAnimator1.setDuration(2000);
-                objectAnimator1.start();
+                objectAnimator1.start();*/
+
                 /*
                 * 动画执行先后顺序
                 * */
@@ -160,6 +171,19 @@ public class SecondActivity extends Activity {
                 /*@SuppressLint("ObjectAnimatorBinding") ObjectAnimator objectAnimator2 = ObjectAnimator.ofObject(myView4,"position", new PointEvaluator(), new Point(500,0));
                 objectAnimator2.setDuration(2000);
                 objectAnimator2.start();*/
+
+                myView4.setLayerType(LAYER_TYPE_HARDWARE, null);
+                ValueAnimator valueAnimator = ValueAnimator.ofArgb(0xFF00FF00);
+                ValueAnimator valueAnimator1 = ValueAnimator.ofInt(300);
+                valueAnimator1.setDuration(2000);
+                valueAnimator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        Log.d("zpp","animation.getAnimatedValue = :"+animation.getAnimatedValue());
+                        myView4.setTranslationX((int)animation.getAnimatedValue());
+                    }
+                });
+                valueAnimator1.start();
             }
         });
     }

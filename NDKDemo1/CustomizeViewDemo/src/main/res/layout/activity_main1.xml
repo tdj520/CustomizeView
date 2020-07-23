@@ -21,19 +21,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         />
-    <Button
-        android:id="@+id/btn"
-        android:layout_marginTop="100dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="动画"
-        />
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="动画1"
-        />
+
+       <Button
+           android:id="@+id/btn"
+           android:layout_marginTop="100dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="动画"
+           />
+       <Button
+           android:id="@+id/btn1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="动画1"
+           />
     <com.example.ndkdemo1.MyView4
         android:id="@+id/myView4"
         android:layout_width="wrap_content"

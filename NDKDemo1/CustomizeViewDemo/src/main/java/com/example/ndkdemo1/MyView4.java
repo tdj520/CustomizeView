@@ -28,6 +28,7 @@ public class MyView4 extends View {
     public void setColor(int color){
         this.color = color;
         mPaint.setColor(color);
+        Log.d("zpp","setColor...",new Exception());
         invalidate();
     }
     public int getColor(int color){
