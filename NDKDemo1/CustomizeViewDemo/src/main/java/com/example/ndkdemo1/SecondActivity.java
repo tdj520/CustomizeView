@@ -16,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -47,6 +48,8 @@ public class SecondActivity extends Activity {
     private Button btn1;
     private int transaction;
     private MyView4 myView4;
+
+    private boolean isLike = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,7 +175,7 @@ public class SecondActivity extends Activity {
                 objectAnimator2.setDuration(2000);
                 objectAnimator2.start();*/
 
-                myView4.setLayerType(LAYER_TYPE_HARDWARE, null);
+                /*myView4.setLayerType(LAYER_TYPE_HARDWARE, null);
                 ValueAnimator valueAnimator = ValueAnimator.ofArgb(0xFF00FF00);
                 ValueAnimator valueAnimator1 = ValueAnimator.ofInt(300);
                 valueAnimator1.setDuration(2000);
@@ -183,7 +186,27 @@ public class SecondActivity extends Activity {
                         myView4.setTranslationX((int)animation.getAnimatedValue());
                     }
                 });
-                valueAnimator1.start();
+                valueAnimator1.start();*/
+                isLike = !isLike;
+                ObjectAnimator objectAnimator1,objectAnimator2,objectAnimator3,objectAnimator5,objectAnimator4;
+                if(isLike){
+                    objectAnimator1 = ObjectAnimator.ofFloat(myView4,"testScale",1.0f,0.8f,1.0f);
+                    objectAnimator2 = ObjectAnimator.ofFloat(myView4,"radius",60);
+                    objectAnimator3 = ObjectAnimator.ofFloat(myView4,"circleAlpha",1,0);
+                    objectAnimator5 = ObjectAnimator.ofFloat(myView4,"circleAlpha1",0,1);
+                    objectAnimator4 = ObjectAnimator.ofInt(myView4,"textDis",20);   //字符串移动距离，从0到20
+                }else {
+                    objectAnimator1 = ObjectAnimator.ofFloat(myView4,"testScale",1.0f,0.8f,1.0f);
+                    objectAnimator2 = ObjectAnimator.ofFloat(myView4,"radius",60);
+                    objectAnimator3 = ObjectAnimator.ofFloat(myView4,"circleAlpha",0,1);
+                    objectAnimator5 = ObjectAnimator.ofFloat(myView4,"circleAlpha1",1,0);
+                    objectAnimator4 = ObjectAnimator.ofInt(myView4,"textDis",20,0);   //字符串移动距离，从20到0
+                }
+
+
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.playTogether(objectAnimator2,objectAnimator3,objectAnimator4,objectAnimator5);
+                animatorSet.start();
             }
         });
     }
