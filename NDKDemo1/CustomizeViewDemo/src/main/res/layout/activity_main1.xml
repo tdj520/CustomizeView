@@ -42,10 +42,16 @@
     >
     <com.example.ndkdemo1.MyView4
         android:id="@+id/myView4"
+        app:customAttrText="自定义属性测试"
+        android:background="#5500FF00"
+        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <com.example.ndkdemo1.JiKeLike
+    <Button
+        android:id="@+id/btn2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="下一个界面"
+        />
 </LinearLayout>
 </LinearLayout>

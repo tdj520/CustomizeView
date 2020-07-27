@@ -12,6 +12,10 @@ import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Path;
@@ -20,6 +24,10 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Process;
+import android.os.UserHandle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -48,7 +56,7 @@ public class SecondActivity extends Activity {
     private Button btn1;
     private int transaction;
     private MyView4 myView4;
-
+    private Button btn2;
     private boolean isLike = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +111,8 @@ public class SecondActivity extends Activity {
                 PathInterpolator pathInterpolator = new PathInterpolator(interpolatorPath);
                 viewPropertyAnimator.setInterpolator(pathInterpolator);*/
                 //viewPropertyAnimator.setInterpolator(new LinearOutSlowInInterpolator());
+                int arr[] = {};
+                int a = arr[10];
 
             }
         });
@@ -209,6 +219,31 @@ public class SecondActivity extends Activity {
                 animatorSet.start();
             }
         });
+
+        btn2 = findViewById(R.id.btn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this,ThirdActivity.class));
+
+
+            }
+        });
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                //主线程异常拦截
+                while (true) {
+                    try {
+                        Log.d("dongjiao","Looper.loop..........");
+                        Looper.loop();//主线程的异常会从这里抛出
+                    } catch (Throwable e) {
+                        Log.d("dongjiao","线程 = ："+Thread.currentThread()+",异常 = ："+e);
+                    }
+                }
+            }
+        });
+
     }
     //自定义求值器
     class TestEvaluator implements TypeEvaluator<Integer> {
